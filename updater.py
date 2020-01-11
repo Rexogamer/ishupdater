@@ -16,9 +16,8 @@ if ishNBuild == "":
     ishNBuild = input("New iSH build: ")
 
 # update the motd
-subprocess.check_call("cd /etc/", shell=True)
-subprocess.check_call("sed 's/{}/{}/g' motd".format(ishCVer, ishNVer), shell=True)
-subprocess.check_call("sed 's/{}/{}/g' motd".format(ishCBuild, ishNBuild), shell=True)
+subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCVer, ishNVer), shell=True)
+subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCBuild, ishNBuild), shell=True)
 
 # update alpine (currently only supports the index/the edge repository)
 subprocess.check_call("apk update")
