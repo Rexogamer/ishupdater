@@ -20,7 +20,7 @@ subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCVer, ishNVer), shel
 subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCBuild, ishNBuild), shell=True)
 
 # update alpine (currently only supports the index/the edge repository)
-subprocess.check_call("apk update")
-supprocess.check_call("apk upgrade --available && sync")
+subprocess.check_call("apk update", shell=True)
+supprocess.check_call("apk upgrade --available && sync", shell=True)
 
 print("Update complete, restart iSH to see changes.")
