@@ -34,8 +34,8 @@ class Updater:
             ishNBuild = input("New iSH build: ")
 
         # update the motd
-        subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCVer, ishNVer), shell=True)
-        subprocess.check_call("sed 's/{}/{}/g' /etc/motd".format(ishCBuild, ishNBuild), shell=True)
+        subprocess.check_call("sed -i 's/{}/{}/g' /etc/motd".format(ishCVer, ishNVer), shell=True)
+        subprocess.check_call("sed -i 's/{}/{}/g' /etc/motd".format(ishCBuild, ishNBuild), shell=True)
         print("MOTD updated; restart to see changes.")
 
     # the alpine updater
@@ -48,7 +48,7 @@ class Updater:
             apkNVer = input("New Alpine version: ")
 
         # update alpine
-        subprocess.check_call("sed 's/{}/{}/g' /etc/apk/repositories".format(apkCVer, apkNVer), shell=True)
+        subprocess.check_call("sed -i 's/{}/{}/g' /etc/apk/repositories".format(apkCVer, apkNVer), shell=True)
         subprocess.check_call("apk update", shell=True)
         subprocess.check_call("apk upgrade --available && sync", shell=True)
         print("Updated Alpine.")
